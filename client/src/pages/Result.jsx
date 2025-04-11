@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { useContext } from 'react';
+import { AppContext } from '../context/AppContext';
 
 export default function Result() {
     const imgg="https://thumbs.dreamstime.com/b/elephant-ai-generated-file-270739358.jpg";
@@ -6,9 +8,19 @@ export default function Result() {
     const [isImageLoaded,setIsImageLoaded]=useState(false);
     const [loading,setLoading]=useState(false);
      const [input,setInput]=useState('');
+     const {generateImage}=useContext(AppContext);
 
      const onSubmitHandler=async (e)=>{
-
+      e.preventDefault();
+      setLoading(true);
+      if(input){
+        const image=await generateImage(input);
+         if(image){
+           setIsImageLoaded(true);
+           setImage(image);
+          }
+        }
+        setLoading(false);
      }
 
   return (

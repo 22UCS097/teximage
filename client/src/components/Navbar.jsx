@@ -4,7 +4,7 @@ import { AppContext } from '../context/AppContext';
 
 
 export default function Navbar() {
-     const {user,setShowLogin}=useContext(AppContext);
+     const {user,setShowLogin,logout,credit}=useContext(AppContext);
 
 
      const navigate=useNavigate();
@@ -24,15 +24,15 @@ export default function Navbar() {
                      src="https://cdn-icons-png.flaticon.com/512/13535/13535364.png"
                       alt="" />
                      <p className='text-xs sm:text-sm
-                      font-medium text-gray-600'>Credit left:50</p>
+                      font-medium text-gray-600'>Credit left:{credit}</p>
                 </button>
-                <p className='text-gray-900 max-sm:hidden pl-4'>Hi, Ravi</p>
+                <p className='text-gray-900 max-sm:hidden pl-4'>Hi, {user.name}</p>
                 <div className="relative group">
                     <img  className="w-10 drop-shadow rounded "  src="https://as1.ftcdn.net/v2/jpg/05/60/26/08/1000_F_560260880_O1V3Qm2cNO5HWjN66mBh2NrlPHNHOUxW.jpg" alt="profile" />
                      <div className="absolute hidden group-hover:block 
                        top-0 right-0 z-10 text-black rounded pt-12">
                         <ul className='list-none m-0 p-2 bg-white rounded-md border text-sm'>
-                            <li className='py-1 px-2 cursor-pointer pr-10'>Logout</li>
+                            <li onClick={logout} className='py-1 px-2 cursor-pointer pr-10'>Logout</li>
                         </ul>
 
                      </div>
