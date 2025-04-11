@@ -20,9 +20,6 @@ app.use(cors());
 app.use('/api/user',userRouter);
 app.use('/api/image',imageRouter);
 
-
-app.get('/',(req,res)=> res.send("API working"));
-
 app.use(express.static(path.join(__dirname,'/client/dist')))
 
 app.get("*",(req,res)=>{
